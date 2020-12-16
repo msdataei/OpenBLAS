@@ -56,6 +56,8 @@ extern "C" {
 #define __USE_SVID
 #endif
 
+#include<sched.h>
+
 #ifdef BUILD_KERNEL
 #include "config_kernel.h"
 #else
