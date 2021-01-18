@@ -29,7 +29,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static FLOAT smin_kernel_64(BLASLONG n, FLOAT *x) {
   FLOAT min;
-
+#if 0
   __asm__("vl     %%v0,0(%[x])\n\t"
     "srlg   %[n],%[n],6\n\t"
     "xgr %%r1,%%r1\n\t"
@@ -78,7 +78,7 @@ static FLOAT smin_kernel_64(BLASLONG n, FLOAT *x) {
     : "m"(*(const FLOAT (*)[n]) x),[x] "a"(x)
     : "cc", "r1", "v0", "v16", "v17", "v18", "v19", "v20", "v21", "v22",
        "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30", "v31");
-
+#endif
   return min;
 }
 

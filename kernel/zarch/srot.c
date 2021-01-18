@@ -28,6 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void srot_kernel_64(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *c, FLOAT *s) {
+#if 0
   __asm__("vlrepf %%v0,%[c]\n\t"
     "vlrepf %%v1,%[s]\n\t"
     "srlg   %[n],%[n],6\n\t"
@@ -175,6 +176,7 @@ static void srot_kernel_64(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *c, FLOAT *s) {
     : "cc", "r1", "v0", "v1", "v16", "v17", "v18", "v19", "v20", "v21",
        "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30",
        "v31");
+#endif
 }
 
 int CNAME(BLASLONG n, FLOAT *x, BLASLONG inc_x, FLOAT *y, BLASLONG inc_y,

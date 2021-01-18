@@ -35,7 +35,7 @@ static void cgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
   register FLOAT *ap1 = ap[1];
   register FLOAT *ap2 = ap[2];
   register FLOAT *ap3 = ap[3];
-
+#if 0
   __asm__("vzero  %%v16\n\t"
         "vzero  %%v17\n\t"
         "vzero  %%v18\n\t"
@@ -169,13 +169,14 @@ static void cgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
     : "cc", "r1", "v0", "v1", "v2", "v3", "v16", "v17", "v18", "v19", "v20",
        "v21", "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30",
        "v31");
+#endif
 }
 
 static void cgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
   register FLOAT *ap0 = ap[0];
   register FLOAT *ap1 = ap[1];
-
+#if 0
   __asm__("vzero  %%v16\n\t"
         "vzero  %%v17\n\t"
         "vzero  %%v18\n\t"
@@ -278,10 +279,12 @@ static void cgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
        "m"(*(const FLOAT (*)[2]) alpha),[alpha] "a"(alpha)
     : "cc", "r1", "v0", "v1", "v2", "v3", "v16", "v17", "v18", "v19", "v20",
        "v21", "v22", "v23");
+#endif
 }
 
 static void cgemv_kernel_4x1(BLASLONG n, FLOAT *ap, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
+#if 0
   __asm__("vzero  %%v16\n\t"
         "vzero  %%v17\n\t"
         "vleib  %%v2,0,0\n\t"
@@ -366,6 +369,7 @@ static void cgemv_kernel_4x1(BLASLONG n, FLOAT *ap, FLOAT *x, FLOAT *y,
        "m"(*(const FLOAT (*)[n * 2]) x),[x] "a"(x),
        "m"(*(const FLOAT (*)[2]) alpha),[alpha] "a"(alpha)
     : "cc", "r1", "v0", "v1", "v2", "v3", "v16", "v17", "v18", "v19");
+#endif
 }
 
 static void copy_x(BLASLONG n, FLOAT *src, FLOAT *dest, BLASLONG inc_src) {

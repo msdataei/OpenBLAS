@@ -627,6 +627,7 @@ static void *alloc_mmap(void *address){
   void *map_address;
 
   if (address){
+    // MAP_ANON is not defined
     map_address = mmap(address,
                        allocation_block_size,
                        MMAP_ACCESS, MMAP_POLICY | MAP_FIXED, -1, 0);

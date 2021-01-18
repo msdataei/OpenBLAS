@@ -28,6 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void saxpy_kernel_64(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *alpha) {
+#if 0
   __asm__("vlrepf %%v0,%[alpha]\n\t"
     "srlg  %[n],%[n],6\n\t"
     "xgr   %%r1,%%r1\n\t"
@@ -105,6 +106,7 @@ static void saxpy_kernel_64(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *alpha) {
        [alpha] "Q"(*alpha)
     : "cc", "r1", "v0", "v16", "v17", "v18", "v19", "v20", "v21", "v22",
        "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30", "v31");
+#endif
 }
 
 int CNAME(BLASLONG n, BLASLONG dummy0, BLASLONG dummy1, FLOAT da, FLOAT *x,

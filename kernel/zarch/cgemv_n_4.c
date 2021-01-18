@@ -34,7 +34,7 @@ static void cgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y) {
   register FLOAT *ap1 = ap[1];
   register FLOAT *ap2 = ap[2];
   register FLOAT *ap3 = ap[3];
-
+#if 0
   __asm__("vlrepg     %%v16,0(%[x])\n\t"
     "vlrepg     %%v17,8(%[x])\n\t"
     "vlrepg     %%v18,16(%[x])\n\t"
@@ -155,12 +155,13 @@ static void cgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y) {
     : "cc", "r1", "v0", "v1", "v2", "v16", "v17", "v18", "v19", "v20",
        "v21", "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30",
        "v31");
+#endif 
 }
 
 static void cgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y) {
   register FLOAT *ap0 = ap[0];
   register FLOAT *ap1 = ap[1];
-
+#if 0
   __asm__("vlrepg     %%v16,0(%[x])\n\t"
     "vlrepg     %%v17,8(%[x])\n\t"
 #if ( !defined(CONJ) && !defined(XCONJ) ) || ( defined(CONJ) && defined(XCONJ) )
@@ -244,9 +245,11 @@ static void cgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y) {
        "m"(*(const FLOAT (*)[4]) x),[x] "a"(x)
     : "cc", "r1", "v0", "v1", "v2", "v16", "v17", "v18", "v19", "v20",
        "v21", "v22", "v23");
+#endif 
 }
 
 static void cgemv_kernel_4x1(BLASLONG n, FLOAT *ap, FLOAT *x, FLOAT *y) {
+#if 0
   __asm__("vlrepg     %%v16,0(%[x])\n\t"
 #if ( !defined(CONJ) && !defined(XCONJ) ) || ( defined(CONJ) && defined(XCONJ) )
     "vlef   %%v17,4(%[x]),0\n\t"
@@ -311,10 +314,12 @@ static void cgemv_kernel_4x1(BLASLONG n, FLOAT *ap, FLOAT *x, FLOAT *y) {
     : [y] "a"(y), "m"(*(const FLOAT (*)[n * 2]) ap),[ap] "a"(ap),
        "m"(*(const FLOAT (*)[2]) x),[x] "a"(x)
     : "cc", "r1", "v0", "v1", "v2", "v16", "v17", "v18", "v19");
+#endif 
 }
 
 static void add_y_4(BLASLONG n, FLOAT *src, FLOAT *dest, FLOAT alpha_r,
                     FLOAT alpha_i) {
+#if 0
   __asm__(
 #if !defined(XCONJ)
     "vlrepf %%v0,%[alpha_r]\n\t"
@@ -355,6 +360,7 @@ static void add_y_4(BLASLONG n, FLOAT *src, FLOAT *dest, FLOAT alpha_r,
        [src] "a"(src),[alpha_r] "Q"(alpha_r),[alpha_i] "Q"(alpha_i)
     : "cc", "r1", "v0", "v1", "v16", "v17", "v18", "v19", "v20", "v21",
        "v22", "v23");
+#endif 
 }
 
 static void add_y(BLASLONG n, FLOAT *src, FLOAT *dest, BLASLONG inc_dest,

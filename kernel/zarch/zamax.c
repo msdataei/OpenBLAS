@@ -32,7 +32,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static FLOAT zamax_kernel_16(BLASLONG n, FLOAT *x) {
   FLOAT amax;
-
+#if 0
   __asm__("vleg   %%v0,0(%[x]),0\n\t"
     "vleg   %%v16,8(%[x]),0\n\t"
     "vleg   %%v0,16(%[x]),1\n\t"
@@ -117,7 +117,7 @@ static FLOAT zamax_kernel_16(BLASLONG n, FLOAT *x) {
     : "m"(*(const FLOAT (*)[n * 2]) x),[x] "a"(x)
     : "cc", "r1", "v0", "v16", "v17", "v18", "v19", "v20", "v21", "v22",
        "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30", "v31");
-
+#endif
   return amax;
 }
 

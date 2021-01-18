@@ -32,7 +32,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static BLASLONG idamin_kernel_32(BLASLONG n, FLOAT *x, FLOAT *amin) {
   BLASLONG iamin;
-
+#if 0
   __asm__("vl     %%v0,0(%[x])\n\t"
     "vflpdb %%v0,%%v0\n\t"
     "vleig  %%v1,0,0\n\t"
@@ -166,7 +166,7 @@ static BLASLONG idamin_kernel_32(BLASLONG n, FLOAT *x, FLOAT *amin) {
     : "cc", "r1", "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v16",
        "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26",
        "v27", "v28", "v29", "v30", "v31");
-
+#endif
   return iamin;
 }
 

@@ -29,7 +29,7 @@ USE OF THIS SOFTWARE,EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static FLOAT sdot_kernel_32(BLASLONG n, FLOAT *x, FLOAT *y) {
   FLOAT dot;
-
+#if 0
   __asm__("vzero %%v0\n\t"
     "vzero %%v1\n\t"
     "vzero %%v2\n\t"
@@ -89,7 +89,7 @@ static FLOAT sdot_kernel_32(BLASLONG n, FLOAT *x, FLOAT *y) {
     : "cc", "r1", "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v16",
        "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26",
        "v27", "v28", "v29", "v30", "v31");
-
+#endif
   return dot;
 }
 

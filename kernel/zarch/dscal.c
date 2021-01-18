@@ -28,6 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void dscal_kernel_16(BLASLONG n, FLOAT da, FLOAT *x) {
+#if 0
   __asm__("vlrepg %%v0,%[da]\n\t"
     "srlg  %[n],%[n],4\n\t"
     "xgr   %%r1,%%r1\n\t"
@@ -63,9 +64,11 @@ static void dscal_kernel_16(BLASLONG n, FLOAT da, FLOAT *x) {
     : [x] "a"(x),[da] "Q"(da)
     : "cc", "r1", "v0", "v24", "v25", "v26", "v27", "v28", "v29", "v30",
        "v31");
+#endif
 }
 
 static void dscal_kernel_16_zero(BLASLONG n, FLOAT *x) {
+#if 0
   __asm__("vzero %%v0\n\t"
     "srlg %[n],%[n],4\n\t"
     "xgr   %%r1,%%r1\n\t"
@@ -84,6 +87,7 @@ static void dscal_kernel_16_zero(BLASLONG n, FLOAT *x) {
     : "=m"(*(FLOAT (*)[n]) x),[n] "+&r"(n)
     : [x] "a"(x)
     : "cc", "r1", "v0");
+#endif
 }
 
 int CNAME(BLASLONG n, BLASLONG dummy0, BLASLONG dummy1, FLOAT da, FLOAT *x,

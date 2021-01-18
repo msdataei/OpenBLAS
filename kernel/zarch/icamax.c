@@ -32,7 +32,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static BLASLONG icamax_kernel_32(BLASLONG n, FLOAT *x, FLOAT *amax) {
   BLASLONG iamax;
-
+#if 0
   __asm__("vlef   %%v0,0(%[x]),0\n\t"
     "vlef   %%v1,4(%[x]),0\n\t"
     "vlef   %%v0,8(%[x]),1\n\t"
@@ -219,7 +219,7 @@ static BLASLONG icamax_kernel_32(BLASLONG n, FLOAT *x, FLOAT *amax) {
     : "cc", "r1", "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8",
        "v9", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24",
        "v25", "v26", "v27", "v28", "v29", "v30", "v31");
-
+#endif
   return iamax;
 }
 

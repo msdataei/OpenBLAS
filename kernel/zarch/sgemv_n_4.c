@@ -35,7 +35,7 @@ static void sgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
   register FLOAT *ap1 = ap[1];
   register FLOAT *ap2 = ap[2];
   register FLOAT *ap3 = ap[3];
-
+#if 0
   __asm__("vlrepf %%v0,0(%[x])\n\t"
     "vlrepf %%v1,4(%[x])\n\t"
     "vlrepf %%v2,8(%[x])\n\t"
@@ -170,13 +170,14 @@ static void sgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
     : "cc", "r0", "r1", "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7",
        "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25",
        "v26", "v27", "v28", "v29", "v30", "v31");
+#endif
 }
 
 static void sgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
   register FLOAT *ap0 = ap[0];
   register FLOAT *ap1 = ap[1];
-
+#if 0
   __asm__("vlrepf %%v0,0(%[x])\n\t"
     "vlrepf %%v1,4(%[x])\n\t"
     "vlrepf %%v2,%[alpha]\n\t"
@@ -267,10 +268,12 @@ static void sgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
     : "cc", "r0", "r1", "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7",
        "v8", "v9", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23",
        "v24", "v25", "v26", "v27", "v28", "v29", "v30", "v31");
+#endif
 }
 
 static void sgemv_kernel_4x1(BLASLONG n, FLOAT *a0, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
+#if 0
   __asm__("vlrepf %%v0,0(%[x])\n\t"
     "vlrepf %%v16,%[alpha]\n\t"
     "vfmsb  %%v0,%%v0,%%v16\n\t"
@@ -339,6 +342,7 @@ static void sgemv_kernel_4x1(BLASLONG n, FLOAT *a0, FLOAT *x, FLOAT *y,
     : "cc", "r0", "r1", "v0", "v16", "v17", "v18", "v19", "v20", "v21",
        "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30",
        "v31");
+#endif
 }
 
 static void add_y(BLASLONG n, FLOAT *src, FLOAT *dest, BLASLONG inc_dest) {

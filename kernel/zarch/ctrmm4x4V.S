@@ -69,7 +69,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* interpreted as representing official policies, either expressed   */
 /* or implied, of The University of Texas at Austin.                 */
 /*********************************************************************/
-
+#if 0
 #define ASSEMBLER
 #include "common.h"
 
@@ -716,7 +716,7 @@ ld %f12,152(%r15)
 br %r14
 .end
 
-
+#endif
 
 
 
