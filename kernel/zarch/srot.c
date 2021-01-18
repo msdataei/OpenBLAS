@@ -28,7 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void srot_kernel_64(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *c, FLOAT *s) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepf %%v0,%[c]\n\t"
     "vlrepf %%v1,%[s]\n\t"
     "srlg   %[n],%[n],6\n\t"

@@ -35,7 +35,7 @@ static void dgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
   register FLOAT *ap1 = ap[1];
   register FLOAT *ap2 = ap[2];
   register FLOAT *ap3 = ap[3];
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg %%v0,0(%[x])\n\t"
     "vlrepg %%v1,8(%[x])\n\t"
     "vlrepg %%v2,16(%[x])\n\t"
@@ -187,7 +187,7 @@ static void dgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
   register FLOAT *ap0 = ap[0];
   register FLOAT *ap1 = ap[1];
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg %%v0,0(%[x])\n\t"
     "vlrepg %%v1,8(%[x])\n\t"
     "vlrepg %%v2,%[alpha]\n\t"
@@ -289,7 +289,7 @@ static void dgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
 
 static void dgemv_kernel_4x1(BLASLONG n, FLOAT *a0, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg %%v0,0(%[x])\n\t"
     "vlrepg %%v16,%[alpha]\n\t"
     "vfmdb  %%v0,%%v0,%%v16\n\t"

@@ -32,7 +32,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static FLOAT zasum_kernel_16(BLASLONG n, FLOAT *x) {
   FLOAT asum;
-#if 0
+#if LOZ_ASM
   __asm__("vzero   %%v24\n\t"
     "vzero   %%v25\n\t"
     "vzero   %%v26\n\t"

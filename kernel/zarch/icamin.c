@@ -32,7 +32,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static BLASLONG icamin_kernel_32(BLASLONG n, FLOAT *x, FLOAT *amin) {
   BLASLONG iamin;
-#if 0
+#if LOZ_ASM
   __asm__("vlef   %%v0,0(%[x]),0\n\t"
     "vlef   %%v1,4(%[x]),0\n\t"
     "vlef   %%v0,8(%[x]),1\n\t"

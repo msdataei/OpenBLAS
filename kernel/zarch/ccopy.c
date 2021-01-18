@@ -28,7 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void ccopy_kernel_32(BLASLONG n, FLOAT *x, FLOAT *y) {
-#if 0
+#if LOZ_ASM
   __asm__("srlg %[n],%[n],5\n\t"
     "0:\n\t"
     "pfd 1, 1024(%[x])\n\t"

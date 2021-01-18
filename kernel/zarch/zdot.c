@@ -28,7 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void zdot_kernel_8(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *d) {
-#if 0
+#if LOZ_ASM
   __asm__("vzero %%v24\n\t"
     "vzero %%v25\n\t"
     "vzero %%v26\n\t"

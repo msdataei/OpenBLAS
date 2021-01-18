@@ -34,7 +34,7 @@ static void cgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y) {
   register FLOAT *ap1 = ap[1];
   register FLOAT *ap2 = ap[2];
   register FLOAT *ap3 = ap[3];
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg     %%v16,0(%[x])\n\t"
     "vlrepg     %%v17,8(%[x])\n\t"
     "vlrepg     %%v18,16(%[x])\n\t"
@@ -161,7 +161,7 @@ static void cgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y) {
 static void cgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y) {
   register FLOAT *ap0 = ap[0];
   register FLOAT *ap1 = ap[1];
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg     %%v16,0(%[x])\n\t"
     "vlrepg     %%v17,8(%[x])\n\t"
 #if ( !defined(CONJ) && !defined(XCONJ) ) || ( defined(CONJ) && defined(XCONJ) )
@@ -249,7 +249,7 @@ static void cgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y) {
 }
 
 static void cgemv_kernel_4x1(BLASLONG n, FLOAT *ap, FLOAT *x, FLOAT *y) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg     %%v16,0(%[x])\n\t"
 #if ( !defined(CONJ) && !defined(XCONJ) ) || ( defined(CONJ) && defined(XCONJ) )
     "vlef   %%v17,4(%[x]),0\n\t"
@@ -319,7 +319,7 @@ static void cgemv_kernel_4x1(BLASLONG n, FLOAT *ap, FLOAT *x, FLOAT *y) {
 
 static void add_y_4(BLASLONG n, FLOAT *src, FLOAT *dest, FLOAT alpha_r,
                     FLOAT alpha_i) {
-#if 0
+#if LOZ_ASM
   __asm__(
 #if !defined(XCONJ)
     "vlrepf %%v0,%[alpha_r]\n\t"

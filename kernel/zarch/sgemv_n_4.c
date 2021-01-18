@@ -35,7 +35,7 @@ static void sgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
   register FLOAT *ap1 = ap[1];
   register FLOAT *ap2 = ap[2];
   register FLOAT *ap3 = ap[3];
-#if 0
+#if LOZ_ASM
   __asm__("vlrepf %%v0,0(%[x])\n\t"
     "vlrepf %%v1,4(%[x])\n\t"
     "vlrepf %%v2,8(%[x])\n\t"
@@ -177,7 +177,7 @@ static void sgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
   register FLOAT *ap0 = ap[0];
   register FLOAT *ap1 = ap[1];
-#if 0
+#if LOZ_ASM
   __asm__("vlrepf %%v0,0(%[x])\n\t"
     "vlrepf %%v1,4(%[x])\n\t"
     "vlrepf %%v2,%[alpha]\n\t"
@@ -273,7 +273,7 @@ static void sgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
 
 static void sgemv_kernel_4x1(BLASLONG n, FLOAT *a0, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepf %%v0,0(%[x])\n\t"
     "vlrepf %%v16,%[alpha]\n\t"
     "vfmsb  %%v0,%%v0,%%v16\n\t"

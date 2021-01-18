@@ -28,7 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void cswap_kernel_32(BLASLONG n, FLOAT *x, FLOAT *y) {
-#if 0
+#if LOZ_ASM
   __asm__("srlg %[n],%[n],5\n\t"
     "xgr  %%r1,%%r1\n\t"
     "0:\n\t"

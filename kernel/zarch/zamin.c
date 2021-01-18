@@ -32,7 +32,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static FLOAT zamin_kernel_16(BLASLONG n, FLOAT *x) {
   FLOAT amin;
-#if 0
+#if LOZ_ASM
   __asm__("vleg   %%v0,0(%[x]),0\n\t"
     "vleg   %%v16,8(%[x]),0\n\t"
     "vleg   %%v0,16(%[x]),1\n\t"

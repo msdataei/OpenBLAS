@@ -29,7 +29,7 @@ USE OF THIS SOFTWARE,EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static double dsdot_kernel_16(BLASLONG n, FLOAT *x, FLOAT *y) {
   double dot;
-#if 0
+#if LOZ_ASM
   __asm__("vzero %%v0\n\t"
     "vzero %%v1\n\t"
     "vzero %%v2\n\t"

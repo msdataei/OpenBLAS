@@ -57,7 +57,7 @@ static void cscal_kernel_16(BLASLONG n, FLOAT da_r, FLOAT da_i, FLOAT *x) {
 }
 
 static void cscal_kernel_16_zero_r(BLASLONG n, FLOAT *alpha, FLOAT *x) {
-#if 0
+#if LOZ_ASM
   __asm__("vlef   %%v0,4(%[alpha]),0\n\t"
     "vlef   %%v0,4(%[alpha]),2\n\t"
     "vflcsb %%v0,%%v0\n\t"
@@ -110,7 +110,7 @@ static void cscal_kernel_16_zero_r(BLASLONG n, FLOAT *alpha, FLOAT *x) {
 }
 
 static void cscal_kernel_16_zero_i(BLASLONG n, FLOAT *alpha, FLOAT *x) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepf %%v0,0(%[alpha])\n\t"
     "srlg %[n],%[n],4\n\t"
     "xgr   %%r1,%%r1\n\t"
@@ -151,7 +151,7 @@ static void cscal_kernel_16_zero_i(BLASLONG n, FLOAT *alpha, FLOAT *x) {
 }
 
 static void cscal_kernel_16_zero(BLASLONG n, FLOAT *x) {
-#if 0
+#if LOZ_ASM
   __asm__("vzero %%v0\n\t"
     "srlg %[n],%[n],4\n\t"
     "xgr   %%r1,%%r1\n\t"

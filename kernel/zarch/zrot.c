@@ -28,7 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void zrot_kernel_16(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *c, FLOAT *s) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg %%v0,%[c]\n\t"
     "vlrepg %%v1,%[s]\n\t"
     "srlg   %[n],%[n],4\n\t"

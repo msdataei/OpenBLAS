@@ -28,7 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void zaxpy_kernel_8(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *alpha) {
-#if 0
+#if LOZ_ASM
   __asm__(
 #if !defined(CONJ)
     "vlrepg %%v0,0(%[alpha])\n\t"

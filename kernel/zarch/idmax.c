@@ -29,7 +29,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static BLASLONG idmax_kernel_32(BLASLONG n, FLOAT *x, FLOAT *max) {
   BLASLONG imax;
-#if 0
+#if LOZ_ASM
   __asm__("vl     %%v0,0(%[x])\n\t"
     "vleig  %%v1,0,0\n\t"
     "vleig  %%v1,1,1\n\t"

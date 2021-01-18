@@ -28,7 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void dscal_kernel_16(BLASLONG n, FLOAT da, FLOAT *x) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg %%v0,%[da]\n\t"
     "srlg  %[n],%[n],4\n\t"
     "xgr   %%r1,%%r1\n\t"
@@ -68,7 +68,7 @@ static void dscal_kernel_16(BLASLONG n, FLOAT da, FLOAT *x) {
 }
 
 static void dscal_kernel_16_zero(BLASLONG n, FLOAT *x) {
-#if 0
+#if LOZ_ASM
   __asm__("vzero %%v0\n\t"
     "srlg %[n],%[n],4\n\t"
     "xgr   %%r1,%%r1\n\t"

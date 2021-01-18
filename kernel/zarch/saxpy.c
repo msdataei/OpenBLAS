@@ -28,7 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void saxpy_kernel_64(BLASLONG n, FLOAT *x, FLOAT *y, FLOAT *alpha) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepf %%v0,%[alpha]\n\t"
     "srlg  %[n],%[n],6\n\t"
     "xgr   %%r1,%%r1\n\t"

@@ -57,7 +57,7 @@ static void zscal_kernel_8(BLASLONG n, FLOAT da_r, FLOAT da_i, FLOAT *x) {
 }
 
 static void zscal_kernel_8_zero_r(BLASLONG n, FLOAT *alpha, FLOAT *x) {
-#if 0
+#if LOZ_ASM
   __asm__("vleg   %%v0,8(%[alpha]),0\n\t"
     "wflcdb %%v0,%%v0\n\t"
     "vleg   %%v0,8(%[alpha]),1\n\t"
@@ -108,7 +108,7 @@ static void zscal_kernel_8_zero_r(BLASLONG n, FLOAT *alpha, FLOAT *x) {
 }
 
 static void zscal_kernel_8_zero_i(BLASLONG n, FLOAT *alpha, FLOAT *x) {
-#if 0
+#if LOZ_ASM
   __asm__("vlrepg %%v0,0(%[alpha])\n\t"
     "srlg %[n],%[n],3\n\t"
     "xgr   %%r1,%%r1\n\t"
@@ -149,7 +149,7 @@ static void zscal_kernel_8_zero_i(BLASLONG n, FLOAT *alpha, FLOAT *x) {
 }
 
 static void zscal_kernel_8_zero(BLASLONG n, FLOAT *x) {
-#if 0
+#if LOZ_ASM
   __asm__("vzero %%v0\n\t"
     "srlg %[n],%[n],3\n\t"
     "xgr   %%r1,%%r1\n\t"

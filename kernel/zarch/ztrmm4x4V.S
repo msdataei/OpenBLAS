@@ -69,7 +69,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* interpreted as representing official policies, either expressed   */
 /* or implied, of The University of Texas at Austin.                 */
 /*********************************************************************/
-#if 0
+#if LOZ_ASM
 #define ASSEMBLER
 #include "common.h"
 

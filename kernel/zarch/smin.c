@@ -29,7 +29,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static FLOAT smin_kernel_64(BLASLONG n, FLOAT *x) {
   FLOAT min;
-#if 0
+#if LOZ_ASM
   __asm__("vl     %%v0,0(%[x])\n\t"
     "srlg   %[n],%[n],6\n\t"
     "xgr %%r1,%%r1\n\t"

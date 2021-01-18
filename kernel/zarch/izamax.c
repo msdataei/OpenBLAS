@@ -32,7 +32,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static BLASLONG izamax_kernel_16(BLASLONG n, FLOAT *x, FLOAT *amax) {
   BLASLONG iamax;
-#if 0
+#if LOZ_ASM
   __asm__("vleg   %%v0,0(%[x]),0\n\t"
     "vleg   %%v1,8(%[x]),0\n\t"
     "vleg   %%v0,16(%[x]),1\n\t"

@@ -35,7 +35,7 @@ static void cgemv_kernel_4x4(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
   register FLOAT *ap1 = ap[1];
   register FLOAT *ap2 = ap[2];
   register FLOAT *ap3 = ap[3];
-#if 0
+#if LOZ_ASM
   __asm__("vzero  %%v16\n\t"
         "vzero  %%v17\n\t"
         "vzero  %%v18\n\t"
@@ -176,7 +176,7 @@ static void cgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
   register FLOAT *ap0 = ap[0];
   register FLOAT *ap1 = ap[1];
-#if 0
+#if LOZ_ASM
   __asm__("vzero  %%v16\n\t"
         "vzero  %%v17\n\t"
         "vzero  %%v18\n\t"
@@ -284,7 +284,7 @@ static void cgemv_kernel_4x2(BLASLONG n, FLOAT **ap, FLOAT *x, FLOAT *y,
 
 static void cgemv_kernel_4x1(BLASLONG n, FLOAT *ap, FLOAT *x, FLOAT *y,
                              FLOAT *alpha) {
-#if 0
+#if LOZ_ASM
   __asm__("vzero  %%v16\n\t"
         "vzero  %%v17\n\t"
         "vleib  %%v2,0,0\n\t"
