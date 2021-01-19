@@ -646,7 +646,11 @@ static void __inline blas_lock(volatile BLASULONG *address){
 #define MAX(a,b)   (a<b? b:a)
 #endif
 
-#define TOUPPER(a) {if ((a) > 0x60) (a) -= 0x20;}
+#if zOS_ARCH
+#define TOUPPER(a) {if ((a) < 170) (a) += 64;}  /* EBCDIC */
+#else
+#define TOUPPER(a) {if ((a) > 0x60) (a) -= 0x20;} /* ASCII */
+#endif
 
 #if defined(__FreeBSD__) || defined(__APPLE__)
 #define MAP_ANONYMOUS MAP_ANON
