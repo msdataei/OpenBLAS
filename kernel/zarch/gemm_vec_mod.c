@@ -497,7 +497,7 @@ static inline void GEBP_block_16_4(
 }
 
 
-int CNAME(BLASLONG bm, BLASLONG bn, BLASLONG bk, FLOAT alpha,
+int CNAME(BLASLONG bm, BLASLONG bn, BLASLONG k, FLOAT alpha,
 	  FLOAT *restrict A, FLOAT *restrict B,
 	  FLOAT *restrict C, BLASLONG ldc
 #ifdef TRMMKERNEL
@@ -505,7 +505,7 @@ int CNAME(BLASLONG bm, BLASLONG bn, BLASLONG bk, FLOAT alpha,
 #endif
 	  )
 {
-	if ( (bm == 0) || (bn == 0) || (bk == 0) || (alpha == ZERO))
+	if ( (bm == 0) || (bn == 0) || (k == 0) || (alpha == ZERO))
 		return 0;
 
 	A = __builtin_assume_aligned(A, 16);
@@ -531,7 +531,7 @@ int CNAME(BLASLONG bm, BLASLONG bn, BLASLONG bk, FLOAT alpha,
 	// offset     => offset
 			
 			FLOAT *restrict C_i = C + col * ldc;
-			const FLOAT *restrict B_i = B + col * bk;
+			const FLOAT *restrict B_i = B + col * k;
 			BLASLONG off = 0;
         		if (trmm) {
                 		if (left) {
