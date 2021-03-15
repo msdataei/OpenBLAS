@@ -30,8 +30,6 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <vecintrin.h>
-
 #define VLEN_BYTES 16
 #define VLEN_FLOATS (VLEN_BYTES / sizeof(FLOAT))
 
