@@ -580,7 +580,7 @@ int CNAME(BLASLONG bm, BLASLONG bn, BLASLONG k, FLOAT alpha,
 					#define BLOCK(bm, bn)                                           \
         					if (m == bm && n == bn) {                               \
                 					GEBP_block_##bm##_##bn(A, k, B_i, C_i, ldc, alpha); \
-                					return;                                         \
+                					continue;                                         \
         					}
 
 					#if UNROLL_M == 16
