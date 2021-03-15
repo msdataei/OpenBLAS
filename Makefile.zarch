@@ -1,12 +1,12 @@
 
 ifeq ($(CORE), Z13)
-CCOMMON_OPT += -march=z13 -mzvector
-FCOMMON_OPT += -march=z13 -mzvector
+CCOMMON_OPT += -march=z13 -mzvector -mvx
+FCOMMON_OPT += -march=z13 -mzvector -mvx
 endif
 
 ifeq ($(CORE), Z14)
-CCOMMON_OPT += -march=z14 -mzvector -O3
-FCOMMON_OPT += -march=z14 -mzvector
+CCOMMON_OPT += -march=z14 -mzvector -mvx -O3
+FCOMMON_OPT += -march=z14 -mzvector -mvx
 endif
 
 # Enable floating-point expression contraction for clang, since it is the
