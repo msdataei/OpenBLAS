@@ -363,7 +363,7 @@ static inline void GEBP_block_16_4(
 			 * Note that we need to massage this particular "barrier"
 			 * depending on the gcc version.
 			 */
-#if LOZ_ASM && ( __GNUC__ > 7 || defined(__clang__) )
+#if __GNUC__ > 7 || defined(__clang__)
 #define BARRIER_READ_BEFORE_COMPUTE(SUFFIX)                                    \
     do {                                                                       \
 	asm(""                                                                 \

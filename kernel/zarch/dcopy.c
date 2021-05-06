@@ -28,6 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void dcopy_kernel_32(BLASLONG n, FLOAT *x, FLOAT *y) {
+#if LOZ_ASM
   __asm__("srlg %[n],%[n],5\n\t"
     "0:\n\t"
     "pfd 1, 1024(%[x])\n\t"
@@ -39,6 +40,7 @@ static void dcopy_kernel_32(BLASLONG n, FLOAT *x, FLOAT *y) {
     : "=m"(*(FLOAT (*)[n]) y),[x] "+&a"(x),[y] "+&a"(y),[n] "+&r"(n)
     : "m"(*(const FLOAT (*)[n]) x)
     : "cc");
+#endif
 }
 
 int CNAME(BLASLONG n, FLOAT *x, BLASLONG inc_x, FLOAT *y, BLASLONG inc_y) {

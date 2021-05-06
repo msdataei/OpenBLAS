@@ -28,6 +28,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "common.h"
 
 static void zcopy_kernel_16(BLASLONG n, FLOAT *x, FLOAT *y) {
+#if LOZ_ASM
   __asm__("srlg %[n],%[n],4\n\t"
     "0:\n\t"
     "pfd 1, 1024(%[x])\n\t"
@@ -40,6 +41,7 @@ static void zcopy_kernel_16(BLASLONG n, FLOAT *x, FLOAT *y) {
        [n] "+&r"(n)
     : "m"(*(const FLOAT (*)[n * 2]) x)
     : "cc");
+#endif
 }
 
 int CNAME(BLASLONG n, FLOAT *x, BLASLONG inc_x, FLOAT *y, BLASLONG inc_y) {
